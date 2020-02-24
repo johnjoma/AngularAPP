@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 
+
 @Component({
   selector: "app-root",
   template: `
@@ -17,5 +18,7 @@ import { Component } from "@angular/core";
   styles: []
 })
 export class AppComponent {
-  title = "my-angular-site";
+  constructor() { }
+
+
 }

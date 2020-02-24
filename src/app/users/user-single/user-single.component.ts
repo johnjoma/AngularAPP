@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-single',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-single.component.scss']
 })
 export class UserSingleComponent implements OnInit {
+  user;
 
-  constructor() { }
-
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute) { }
   ngOnInit(): void {
+
+    //grab the username out of the url.
+    this.route.params.subscribe(params => {
+      const username = params['username'];
+
+      //use the userservice to get data from github api.
+
+      this.userService
+        .getUser(username)
+        .subscribe(user => this.user = user);
+
+
+
+    });
+
+
+
   }
 
 }
